@@ -177,6 +177,7 @@ class ChopperClient {
     Response res = Response(response, response.body);
 
     if (res.isSuccessful) {
+      res = await _interceptResponse(res);
       if (responseConverter != null) {
         res = await responseConverter(res);
       } else {
